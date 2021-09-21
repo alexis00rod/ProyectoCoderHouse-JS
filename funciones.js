@@ -239,6 +239,10 @@ function carritoUI(){
     // Agrego los productos seleccionados al body del carrito
     $(".carrito-body").html(carritoItem);
 
+    // Genero el html con el contador de productos seleccionados
+    $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
+
+
     // Agrego la funcion para el boton de restar cantidad
     $(".btn__restar-cantidad").click((e)=>{
         // Busco en el array carrito el producto seleccionado segun su id
@@ -256,7 +260,7 @@ function carritoUI(){
             $(".precio-final span").html(`$${precioFinal()}`)
 
             // Actualizo el contador de la cantidad total de productos en el carrito
-            $('#btnCarrito p').html(`${cantidadTotalProductos()}`);
+            $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
 
             // Guardo en el localStorange
             localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -278,7 +282,7 @@ function carritoUI(){
         $(".precio-final span").html(`$${precioFinal()}`)
 
         // Actualizo el contador de la cantidad total de productos en el carrito
-        $('#btnCarrito p').html(`${cantidadTotalProductos()}`);
+        $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
 
         // Guardo en el localStorange
         localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -308,11 +312,9 @@ function carritoUI(){
     }
     // Si no hay productos en el carrito el footer desaparece 
     else {
+        $(".carrito-body").html("<p>Tu carrito esta vacio</p>")
         $(".carrito-footer").html("");
     }
-    
-    // Genero el html con el contador de productos seleccionados
-    $('#btnCarrito p').html(`${cantidadTotalProductos()}`);
 
     // Agrego la funcion para el boton de eliminar producto del carrito
     $(".btn__eliminar-producto").click((e)=>{
@@ -350,39 +352,40 @@ function carritoUI(){
 
         const envio = 350;
 
+        $(".carrito-footer").empty();
+
         // Si la cantidad total de productos es mayor a 3 aplico el descuento 
         if(cantidadTotalProductos() >= 3){
             // Al precio final le resto el descuento
             precioFinalDescontado = precioFinal() - descuento;
-
-            $(".carrito-footer").html(`<div class="carrito-finalizacion">
+            $(".carrito-body").html(`<div class="carrito-finalizacion">
                                         <h4>Resumen de compra</h4>
-                                        <ul>
-                                            <li><p>Productos: </p><span>(${cantidadTotalProductos()})</span></li>
-                                            <li><p>Subtotal: </p><span>$${precioFinal()}</span></li>
-                                            <li><p>Descuento del 15%: </p><span>$${descuento}</span></li>
-                                            <li><p>Envio: </p><span>${envio}</span></li>
-                                            <li><p>Total: </p><span>$${precioFinalDescontado + envio}</span></li>
-                                        </ul>
+                                        <div class="carrito-finalizacion-contenido">
+                                            <p>Productos: <span>(${cantidadTotalProductos()})</span></p>
+                                            <p>Subtotal: <span>$${precioFinal()}</span></p>
+                                            <p>Descuento del 15%: <span>$${descuento}</span></p>
+                                            <p>Envio: <span>$${envio}</span></p>
+                                            <p>Total: <span>$${precioFinalDescontado + envio}</span></p>
+                                        </div>
                                         <button class="btn__cancelar-compra">Cancelar compra</button>
                                         <button class="btn__finalizar-compra">Finalizar compra</button>
                                     </div>`);
         } 
-        // Si la cantidad total no es mayor a 3 no aplicar descuento
+        // Si la cantidad total no es mayor a 3 no aplico descuento
         else {
             precioFinalDescontado = precioFinal();
 
-            $(".carrito-footer").html(`<div class="carrito-finalizacion">
-                                    <h4>Resumen de compra</h4>
-                                    <ul>
-                                        <li><p>Productos: </p><span>(${cantidadTotalProductos()})</span></li>
-                                        <li><p>Subtotal: </p><span>$${precioFinal()}</span></li>
-                                        <li><p>Envio: </p><span>${envio}</span></li>
-                                        <li><p>Total: </p><span>$${precioFinalDescontado + envio}</span></li>
-                                    </ul>
-                                    <button class="btn__cancelar-compra">Cancelar compra</button>
-                                    <button class="btn__finalizar-compra">Finalizar compra</button>
-                                </div>`);
+            $(".carrito-body").html(`<div class="carrito-finalizacion">
+                                        <h4>Resumen de compra</h4>
+                                        <div class="carrito-finalizacion-contenido">
+                                            <p>Productos: <span>(${cantidadTotalProductos()})</span></p>
+                                            <p>Subtotal: <span>$${precioFinal()}</span></p>
+                                            <p>Envio: <span>$${envio}</span></p>
+                                            <p>Total: <span>$${precioFinalDescontado + envio}</span></p>
+                                        </div>
+                                        <button class="btn__cancelar-compra">Cancelar compra</button>
+                                        <button class="btn__finalizar-compra">Finalizar compra</button>
+                                    </div>`);
         
         }       
 
@@ -396,8 +399,63 @@ function carritoUI(){
 
 }
 
+// Funcion para cancelar compra
+function cancelarCompra() {
+    // Vacio el carrito
+    localStorage.removeItem("carrito");
+    carrito.length = 0;
+    $("#btn__carrito p").html("0")
+    $(".carrito-finalizacion").empty();
+    $(".carrito-body").html("<p>Tu carrito esta vacio</p>")
+
+    // Cierro el carrito
+    $(".carrito").toggleClass("mostrar-carrito");
+}
+
+// Agrego el contador de notificaciones
+let notificaciones = 0;
+
+// Funcion para finazalizar la compra
+function finalizarCompra() {
+    notificaciones += 1
+
+    // Agrego la notificacion en el boton de notificaciones
+    $("#btn__notificacion p").html(notificaciones)
+
+    // Agrego el mensaje de compra finalizada en la seccion notificaciones
+    $(".notificaciones-contenido").append("<p>Su compra finalizo con exito, pronto recibiras los productos en la puerta de tu casa. Gracias por elegirnos.</p>")
+
+    // Si hay notificaciones muestro el boton para eliminar los mensajes
+    if(notificaciones + 1){
+        $(".btn__eliminar-msjs").show();
+    }
+
+    // Agrego la funcion del boton para borrar los mensajes
+    $(".btn__eliminar-msjs").click(()=>{
+        // Borro los html de las notificaciones
+        $(".notificaciones-contenido").html("");
+
+        // Restauro a 0 el contador de notifaciones
+        notificaciones = 0;
+
+        // Actualizo el contadador de notificaciones del boton
+        $("#btn__notificacion p").html("0");
+
+        // Oculto el boton para borrar mensajes
+        $(".btn__eliminar-msjs").hide();
+    })
+
+    cancelarCompra()
+
+}
+
+// Funcion para el boton de notificaciones
+$("#btn__notificacion").click(()=>{
+    $("#notificaciones").slideToggle()
+})
+
 // Funcion para el boton del menu
-$("#btnMenu").click(()=>{
+$("#btn__menu").click(()=>{
     $("nav ul").toggleClass("show");
 })
 
@@ -407,20 +465,14 @@ $("nav ul li a").click(()=>{
 })
 
 // Funcion para el boton del carrito
-$("#btnCarrito").click(()=>{
-    // $(".carrito").toggleClass("show");
-    $("#banner").hide();
-    $("#catalogo").hide();
-    $(".carrito").show();
+$("#btn__carrito").click(()=>{
+    $(".carrito").toggleClass("mostrar-carrito");
     
 })
 
 // Funcion para el boton de cerrar el carrito
 $(".btn__cerrar-carrito").click(()=>{
-    // $(".carrito").toggleClass("show");
-    $("#banner").show();
-    $("#catalogo").show();
-    $(".carrito").hide();
+    $(".carrito").toggleClass("mostrar-carrito");
 })
 
 // Funcion para mostrar elementos al hacer scroll

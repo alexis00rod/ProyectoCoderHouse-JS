@@ -19,13 +19,28 @@
                 <li><a href="servicios.html" class="nav-link-activo">Servicios</a></li>
                 <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
             </ul>
-            <a href="#carrito" id="btnCarrito">
-                <i class="fas fa-shopping-cart"></i>
-                <p>0</p>
-            </a>
-            <button id="btnMenu">
+            <button id="btn__menu">
                 <i class="fas fa-bars"></i>
             </button>
+            <div class="nav__botones">
+                <button id="btn__notificacion">
+                    <i class="fas fa-bell"></i>
+                    <p>0</p>
+                </button>
+                <section id="notificaciones">
+                    <div class="notificaiones-header">
+                        <h4>Notificaciones</h4>
+                        <i class="fas fa-trash btn__eliminar-msjs"></i>
+                    </div>
+                    <div class="notificaciones-contenido">
+                        
+                    </div>
+                </section>
+                <button id="btn__carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>0</p>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -59,6 +74,19 @@
                 </div>
             </div>
         </article>
+
+        <section class="carrito" id="carrito">
+            <div class="carrito-header">
+                <h3>Tu carrito</h3>
+                <i class="fas fa-arrow-left btn__cerrar-carrito"></i>
+            </div>
+            <ul class="carrito-body">
+                <p>Tu carrito esta vacio</p>
+            </ul>
+            <ul class="carrito-footer">
+                
+            </ul>
+        </section>
 
     </main>
 
