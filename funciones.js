@@ -5,12 +5,17 @@ function productosDestacadoUI(){
     for (const producto of productosDestacados) {
         $(".slider").append(`<li class="slider-item">
                                 <div class="slider-item__img">
-                                    <img src="img/tienda/${producto.img}">    
+                                    <img src="img/tienda/${producto.img}" alt="${producto.nombre}">
                                 </div>
-                                <div class="slider-item__info">
-                                    <h4>${producto.nombre}</h4>
-                                    <strong>$${producto.precio}</strong>
-                                    <i class="fas fa-cart-plus btn__agregar" id="${producto.id}"></i>
+                                <div class="slider-item__contenido">
+                                    <div class="slider-item__titulo">
+                                        <h4>${producto.nombre}</h4>
+                                        <strong>$${producto.precio}</strong>
+                                    </div>
+                                    <div class="slider-item__botones">
+                                        <i class="bx bxs-cart-add btn__agregar" id="${producto.id}"></i>
+                                        <i class="bx bx-expand btn__ver-producto" id="${producto.id}"></i>
+                                    </div>
                                 </div>
                             </li>`);
     }
@@ -53,16 +58,20 @@ function filtroCategoriasUI() {
     const categoria = categorias.filter((ele, pos) => categorias.indexOf(ele) == pos)
     
     // Genero el html con cada categoria
-    $(".catalogo__categorias").prepend(`<li><span>Todos</span><i class="fas fa-chevron-right"></i></li>`)
+    $(".catalogo__categorias").prepend(`<li>
+                                            <a href="#productos"><span>Todos</span><i class='bx bxs-right-arrow'></i></a>
+                                        </li>`)
     categoria.forEach(categoria => {
-        $(".catalogo__categorias").append(`<li><span>${categoria}</span><i class="fas fa-chevron-right"></i></li>`)
+        $(".catalogo__categorias").append(`<li>
+                                            <a href="#productos"><span>${categoria}</span><i class='bx bxs-right-arrow'></i></a>
+                                            </li>`)
     })
-    
+
     // Genero la funcion para cuando se seleccione una categoria
     $(".catalogo__categorias li").click(filtrarProductos);
 
     // Genero la funcion para mostrar y ocultar las lista de categorias al dar click en el boton de ver categorias
-    $(".ver-categorias").click(()=>{
+    $(".btn__ver-categorias").click(()=>{
         $(".catalogo__categorias").slideToggle("fast")
     })
 
@@ -99,19 +108,20 @@ function catalogoProductosUI(productos) {
                                             <div class="producto-item__img">
                                                 <img src="img/tienda/${producto.img}" alt="${producto.nombre}">
                                             </div>
-                                            <div class="producto-item--body">
+                                            <div class="producto-item__contenido">
                                                 <h4>${producto.nombre}</h4>
-                                                <div class="producto-item--head">
-                                                    <strong>$${producto.precio}</strong>
-                                                    <i class="fas fa-cart-plus btn__agregar" id="${producto.id}"></i>
-                                                </div>
+                                                <strong>$${producto.precio}</strong>
+                                            </div>
+                                            <div class="producto-item__botones">
+                                                <i class="bx bxs-cart-add btn__agregar" id="${producto.id}"></i>
+                                                <i class="bx bx-expand btn__ver-producto" id="${producto.id}"></i>
                                             </div>
                                         </div>`);
 
     }
 
     // Agrego la funcion para ver detalle del producto
-    $(".producto-item__img img").click(verDetalleProducto);
+    $(".btn__ver-producto").click(verDetalleProducto);
 
     // Agrego la funcion para el boton de agregar al carrito
     $(".btn__agregar").click(comprarProducto);
@@ -123,7 +133,7 @@ function verDetalleProducto(e){
     e.preventDefault();
 
     // Busco el producto en el array productos
-    const verProducto = productos.find(producto => producto.nombre == e.target.alt);
+    const verProducto = productos.find(producto => producto.id == e.target.id);
 
     console.log(verProducto)
 
@@ -476,10 +486,12 @@ $(".btn__cerrar-carrito").click(()=>{
 })
 
 // Funcion para mostrar elementos al hacer scroll
-// $(document).scroll(()=>{
-//     let scroll = $(document).scrollTop();
+$(document).scroll(()=>{
+    let scroll = $(document).scrollTop();
 
-//     if(scroll > 200){
-//         $(".producto-item").fadeIn(1000)
-//     }
-// })
+    // if(scroll > 200){
+    //     $(".producto-item").fadeIn(1000)
+    // }
+
+
+})
