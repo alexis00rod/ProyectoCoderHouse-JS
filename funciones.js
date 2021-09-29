@@ -1,35 +1,33 @@
 // Funcion para generar el slider con los productos destacados
-function productosDestacadoUI(){
-    // Filtrado de productos destacados
-    let productosDestacados = productos.filter(producto => producto.destacado === "si");
+function productosDestacadoUI(productos) {
+    // Busco en el array productos los productos destacados
+    let productosDestacados = productos.filter(productos => productos.valoracion > 4.9)
+
+    // Genero el html por cada producto
     for (const producto of productosDestacados) {
-        $(".slider").append(`<li class="slider-item">
-                                <div class="slider-item__img">
-                                    <img src="img/tienda/${producto.img}" alt="${producto.nombre}">
-                                </div>
-                                <div class="slider-item__contenido">
-                                    <div class="slider-item__titulo">
-                                        <h4>${producto.nombre}</h4>
+        $(".slider-items").append(`<li class="slider-item">
+                                    <img src="img/tienda/${producto.img}">
+                                    <div class="slider-item__contenido">
+                                        <h3>${producto.nombre}</h3>
+                                        <div class="slider-item__descripcion">
+                                        <p>${producto.descripcion}</p>
                                         <strong>$${producto.precio}</strong>
+                                        </div>
+                                        <span class="btn__ver-producto" id="${producto.id}">Ver detalles</span>
                                     </div>
-                                    <div class="slider-item__botones">
-                                        <i class="bx bxs-cart-add btn__agregar" id="${producto.id}"></i>
-                                        <i class="bx bx-expand btn__ver-producto" id="${producto.id}"></i>
-                                    </div>
-                                </div>
-                            </li>`);
+                                </li>`)
     }
 
-    // Slider de productos destacados
+    // Genero las variables que voy a necesitar para las funciones de los botones
     let sliderItems = $('.slider li').length;
     let sliderPos = 1;
-    
+
     // Oculto todos los items que hay dentro del slider y muestro solo el primero
     $(".slider li").hide();
     $(".slider li:first").show();
-    
+
     // Agrego la funcion para el boton de anterior
-    $(".btn__slider--prev").click(()=>{
+    $(".btn__slider-left").click(()=>{
         if( sliderPos >= sliderItems){
             sliderPos = 1;
         } else {
@@ -40,15 +38,15 @@ function productosDestacadoUI(){
     });
 
     // Agrego la funcion para el boton de siguiente
-    $(".btn__slider--next").click(()=>{
-        if( sliderPos <= 1){
-            sliderPos = sliderItems;
-        } else {
-            sliderPos--;
-        }
-        $('.slider li').hide();
-        $(`.slider li:nth-child(${sliderPos})`).fadeIn(1000);
-    });
+     $(".btn__slider-right").click(()=>{
+         if( sliderPos <= 1){
+             sliderPos = sliderItems;
+         } else {
+             sliderPos--;
+         }
+         $('.slider li').hide();
+         $(`.slider li:nth-child(${sliderPos})`).fadeIn(1000);
+     });
 
 }
 
@@ -140,7 +138,7 @@ function catalogoProductosUI(productos) {
                                             </div>
                                             <div class="producto-item__footer">
                                                 <strong>$${producto.precio}</strong>
-                                                <span class="btn__ver-producto" id="${producto.id}">Detalles</span>
+                                                <span class="btn__ver-producto" id="${producto.id}">Ver detalles</span>
                                             </div>
                                         </div>`);
 
@@ -488,11 +486,6 @@ $("#btn__notificacion").click(()=>{
 $("#btn__menu").click(()=>{
     $(".navbar").toggleClass("mostrar-menu");
 })
-
-// Funcion para para cerrar el menu al presionar un link
-// $("nav ul li a").click(()=>{
-//     $("nav ul").toggleClass("show");
-// })
 
 // Funcion para el boton del carrito
 $("#btn__carrito").click(()=>{

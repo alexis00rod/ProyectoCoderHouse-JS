@@ -5,7 +5,6 @@
         "precio":9000,
         "categoria": "Procesadores",
         "img":"procesador1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.6
@@ -15,7 +14,6 @@
         "precio":45000,
         "categoria":"Procesadores",
         "img":"procesador2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -25,7 +23,6 @@
         "precio":60000,
         "categoria":"Procesadores",
         "img":"procesador3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -35,7 +32,6 @@
         "precio":40000,
         "categoria":"Procesadores",
         "img":"procesador4.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.9
@@ -45,7 +41,6 @@
         "precio":80000,
         "categoria":"Tarjetas Graficas",
         "img":"tarjeta-grafica1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 5.0
@@ -55,7 +50,6 @@
         "precio":118000,
         "categoria":"Tarjetas Graficas",
         "img":"tarjeta-grafica2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.4
@@ -65,7 +59,6 @@
         "precio":19000,
         "categoria":"Tarjetas Graficas",
         "img":"tarjeta-grafica3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.7
@@ -75,7 +68,6 @@
         "precio":215000,
         "categoria":"Tarjetas Graficas",
         "img":"tarjeta-grafica4.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 3.9
@@ -85,7 +77,6 @@
         "precio":18000,
         "categoria":"Memorias RAMs",
         "img":"memoria-ram1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.9
@@ -95,7 +86,6 @@
         "precio":12000,
         "categoria":"Memorias RAMs",
         "img":"memoria-ram2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -105,7 +95,6 @@
         "precio":7000,
         "categoria":"Memorias RAMs",
         "img":"memoria-ram3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 5.0
@@ -115,7 +104,6 @@
         "precio":6000,
         "categoria":"Memorias RAMs",
         "img":"memoria-ram4.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.6
@@ -125,7 +113,6 @@
         "precio":13000,
         "categoria":"Motherboards",
         "img":"motherboard1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -135,7 +122,6 @@
         "precio":23000,
         "categoria":"Motherboards",
         "img":"motherboard2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.7
@@ -145,7 +131,6 @@
         "precio":45000,
         "categoria":"Motherboards",
         "img":"motherboard3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 5.0
@@ -155,7 +140,6 @@
         "precio":5500,
         "categoria":"Fuentes de alimentacion",
         "img":"fuente1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -165,7 +149,6 @@
         "precio":6000,
         "categoria":"Fuentes de alimentacion",
         "img":"fuente2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.7
@@ -175,7 +158,6 @@
         "precio":8000,
         "categoria":"Fuentes de alimentacion",
         "img":"fuente3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 5.0
@@ -185,7 +167,6 @@
         "precio":8000,
         "categoria":"Auriculares",
         "img":"auricular1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.5
@@ -195,7 +176,6 @@
         "precio":12000,
         "categoria":"Auriculares",
         "img":"auricular2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.9
@@ -205,7 +185,6 @@
         "precio":8000,
         "categoria":"Teclados",
         "img":"teclado1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.7
@@ -215,7 +194,6 @@
         "precio":24000,
         "categoria":"Teclados",
         "img":"teclado2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 5.0
@@ -225,7 +203,6 @@
         "precio":3800,
         "categoria":"Mouses",
         "img":"mouse1.png",
-        "destacado": "si",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -235,7 +212,6 @@
         "precio":6000,
         "categoria":"Mouses",
         "img":"mouse2.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.8
@@ -245,7 +221,6 @@
         "precio":13000,
         "categoria":"Auriculares",
         "img":"auricular3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 5.0
@@ -255,7 +230,6 @@
         "precio":12000,
         "categoria":"Teclados",
         "img":"teclado3.png",
-        "destacado": "no",
         "cantidad": 1,
         "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis mauris felis.",
         "valoracion": 4.9
