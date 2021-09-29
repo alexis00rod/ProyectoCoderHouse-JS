@@ -59,11 +59,11 @@ function filtroCategoriasUI() {
     
     // Genero el html con cada categoria
     $(".catalogo__categorias").prepend(`<li>
-                                            <a href="#productos"><span>Todos</span><i class='bx bxs-right-arrow'></i></a>
+                                            <a href="#productos"><span>Todos</span><i class="fas fa-chevron-right"></i></a>
                                         </li>`)
     categoria.forEach(categoria => {
         $(".catalogo__categorias").append(`<li>
-                                            <a href="#productos"><span>${categoria}</span><i class='bx bxs-right-arrow'></i></a>
+                                            <a href="#productos"><span>${categoria}</span><i class="fas fa-chevron-right"></i></a>
                                             </li>`)
     })
 
@@ -97,6 +97,32 @@ function filtrarProductos(e){
 
 }
 
+// Funcion para obtener el nuevo producto agregado
+function productoNuevoUI(productos) {
+    // Busco el ultimo objeto del array productos
+    let productoNuevo = productos[productos.length - 1]
+
+    // Genero el html del objeto correspondiente
+    $(".catalogo__producto-nuevo").append(`<div class="producto-nuevo__item">
+                                            <div class="producto-nuevo__contenido">
+                                                <div class="producto-nuevo__titulo">
+                                                    <h4>${productoNuevo.nombre}</h4>
+                                                    <p>${productoNuevo.categoria}<span><i class="fas fa-star"></i>${productoNuevo.valoracion}</span></p>
+                                                </div>
+                                                <div class="producto-nuevo__info">
+                                                    <p>${productoNuevo.descripcion}</p>
+                                                    <strong>$${productoNuevo.precio}</strong>
+                                                </div>
+                                                <div class="producto-nuevo__botones">
+                                                    <a href="" class="btn__agregar" id="${productoNuevo.id}">Agregar al carrito<i class="fas fa-shopping-bag"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="producto-nuevo__img">
+                                                <img src="img/tienda/${productoNuevo.img}" alt="${productoNuevo.nombre}">
+                                            </div>
+                                        </div>`)
+}
+
 // Funcion para generar el catalogo de productos
 function catalogoProductosUI(productos) {
     // Agrego el contador de todos los productos que hay en el catalogo
@@ -105,16 +131,16 @@ function catalogoProductosUI(productos) {
     // Genero el html del catalogo con todos los productos
     for (const producto of productos) {
         $(".catalogo__productos").append(`<div class="producto-item" id="${producto.id}">
-                                            <div class="producto-item__img">
+                                            <div class="producto-item__body">
                                                 <img src="img/tienda/${producto.img}" alt="${producto.nombre}">
+                                                <div class="producto-item__titulo">
+                                                    <h4>${producto.nombre}</h4>
+                                                    <span><i class="fas fa-star"></i>${producto.valoracion}</span>
+                                                </div>
                                             </div>
-                                            <div class="producto-item__contenido">
-                                                <h4>${producto.nombre}</h4>
+                                            <div class="producto-item__footer">
                                                 <strong>$${producto.precio}</strong>
-                                            </div>
-                                            <div class="producto-item__botones">
-                                                <i class="bx bxs-cart-add btn__agregar" id="${producto.id}"></i>
-                                                <i class="bx bx-expand btn__ver-producto" id="${producto.id}"></i>
+                                                <span class="btn__ver-producto" id="${producto.id}">Detalles</span>
                                             </div>
                                         </div>`);
 
@@ -135,40 +161,33 @@ function verDetalleProducto(e){
     // Busco el producto en el array productos
     const verProducto = productos.find(producto => producto.id == e.target.id);
 
-    console.log(verProducto)
-
     // Se muestra el detalle del producto seleccioando
-    $("#producto").show();
+    $(".producto").show();
 
     // Funcion para cerrar los detalles del producto
     $(".cerrar-detalle-producto").click(()=>{
-        $("#producto").hide();
+        $(".producto").hide();
     })
 
-    // Genero las cuotas para el producto seleccionado
-    const precioCuotas12 = verProducto.precio/12;
-
     // Genero el html con los detalles del producto seleccionado
-    $(".producto-detalles").html(`<div class="producto-detalle">
-                                    <div class="producto__img">
-                                        <img src="img/tienda/${verProducto.img}" alt="${verProducto.nombre}">
+    $(".producto-detalles").html(`<div class="producto-detalles__body">
+                                    <img src="img/tienda/${verProducto.img}" alt="${verProducto.nombre}">
+                                    <div class="producto-detalles__contenido">
+                                        <div class="producto-detalles__titulo">
+                                            <h4>${verProducto.nombre}</h4>
+                                        </div>
+                                        <p>${verProducto.categoria}<span><i class="fas fa-star"></i>${verProducto.valoracion}</span><p>
                                     </div>
-                                    <div class="producto-info">
-                                        <div class="producto__nombre"><h4>${verProducto.nombre}</h4></div>
-                                        <div class="producto__categoria"><span>${verProducto.categoria}</span></div>
-                                        <div class="producto__precio">
-                                            <p><strong>$${verProducto.precio}</strong></p>
-                                            <p><strong>$${precioCuotas12.toFixed(2)}</strong></p>
-                                        </div>
-                                        <div class="producto-info__footer">
-                                            <p><i class="fas fa-check"></i> Stock disponible</p>
-                                            <p><i class="fas fa-shipping-fast"></i> Envios a todo el pais</p>
-                                        </div>
-                                        <div class="producto-info__descripcion">
-                                            <p>${verProducto.descripcion}</p>
-                                        </div>
-                                    </div>
-                                </div>`);
+                                </div>
+                                <div class="producto-detalles__precio">
+                                    <strong>$${verProducto.precio}</strong>    
+                                </div>
+                                <div class="producto-detalles__footer">
+                                    <p>${verProducto.descripcion}</p>    
+                                </div>
+                                <div class="producto-detalles__botones">
+                                <a href="" class="btn__agregar" id="${verProducto.id}">Agregar al carrito<i class="fas fa-shopping-bag"></i></a>    
+                                </div>`)
 
     // Busco productos similares
     const productoSimilares = productos.filter(producto => producto.categoria == verProducto.categoria);
@@ -178,18 +197,19 @@ function verDetalleProducto(e){
     for (const producto of productoSimilares){
         if(verProducto != producto){
             productoSimilar += `<div class="producto-similar">
-                                    <div class="producto-similar__img">
-                                        <img src="img/tienda/${producto.img}" alt="${producto.nombre}">
-                                    </div>
-                                    <div class="producto-similar__info">
+                                    <img src="img/tienda/${producto.img}" alt="${producto.nombre}">
+                                    <div class="producto-similar__contenido">
                                         <h4>${producto.nombre}</h4>
-                                        <p><strong>$${producto.precio}</strong></p>
+                                        <p><strong>$${producto.precio}</strong><span><i class="fas fa-star"></i>${producto.valoracion}</spam></p>
                                     </div>
                                 </div>`
         }
 
     }
     $(".productos-similares").html(productoSimilar)
+
+    // Agrego la funcion para el boton de agregar al carrito
+    $(".btn__agregar").click(comprarProducto);
     
 }
 
@@ -227,27 +247,23 @@ function carritoUI(){
     // Genero el html de cada producto seleccionado
     let carritoItem = '';
     for (const producto of carritoLocal) {
-        carritoItem += `<li class="carrito-item" id="${producto.id}">
-                            <div class="item-img">
-                                <img src="img/tienda/${producto.img}" alt="">
+        carritoItem += `<li class="carrito-item">
+                            <img src="img/tienda/${producto.img}" alt="">
+                            <div class="carrito-item__contenido">
+                                <h4>${producto.nombre}</h4>
+                                <div class="carrito-item__cantidad">
+                                    <i class="fas fa-chevron-left btn__restar-cantidad"" id="${producto.id}"></i>
+                                    <p class="cantidad-contador">${producto.cantidad}</p>
+                                    <i class="fas fa-chevron-right btn__sumar-cantidad" id="${producto.id}"></i>
+                                </div>
                             </div>
-                            <div class="item-nombre">
-                                <h5>${producto.nombre}</h5></td>
-                            </div>
-                            <div class="item-precio">
-                                <strong>$${producto.precio}</strong>
-                            </div>
-                            <div class="item-cantidad">
-                                <i class="fas fa-chevron-left btn__restar-cantidad"" id="${producto.id}"></i>
-                                <p class="cantidad-contador">${producto.cantidad}</p>
-                                <i class="fas fa-chevron-right btn__sumar-cantidad" id="${producto.id}"></i>
-                            </div>
+                            <strong>$${producto.precio}</strong>
                             <i class="fas fa-trash btn__eliminar-producto" id="${producto.id}"></i>
                         </li>`;
     }
 
     // Agrego los productos seleccionados al body del carrito
-    $(".carrito-body").html(carritoItem);
+    $(".carrito__productos").html(carritoItem);
 
     // Genero el html con el contador de productos seleccionados
     $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
@@ -303,7 +319,8 @@ function carritoUI(){
     function precioFinal(){
         let precioFinal = 0;
         carrito.forEach(precio => precioFinal += precio.precioTotal())
-        return precioFinal.toFixed(2);
+        // return precioFinal.toFixed(2);
+        return precioFinal;
     }
 
     // Agrego la funcion para calcular la cantidad de productos seleccionados
@@ -313,17 +330,20 @@ function carritoUI(){
         return cantidadTotalProductos;
     }
 
-    // Si en el carrito hay mas de 1 producto mostrar el footer del carrito
+    // Si en el carrito hay mas de 1 producto mostrar el total de la compra
     if(cantidadTotalProductos() >= 1){
-        $(".carrito-footer").html(`<li>
-                                    <p class="precio-final">Subtotal: <span>$${precioFinal()}</span></p>
-                                </li>
-                                <button class="btn__continuar-compra">Comprar</button>`);
+        $(".carrito__total .cantidad-productos span").html(`(${cantidadTotalProductos()})`);
+        $(".carrito__total .subtotal span").html(`$${precioFinal()}`);
+        $(".carrito__total .envio span").html("$350");
+        $(".carrito__total .total span").html(`$${precioFinal() + 350}`);
     }
-    // Si no hay productos en el carrito el footer desaparece 
+    // Si no hay productos en el carrito no mostrar el total 
     else {
-        $(".carrito-body").html("<p>Tu carrito esta vacio</p>")
-        $(".carrito-footer").html("");
+        $(".carrito__productos").html("<p>Tu carrito esta vacio</p>")
+        $(".carrito__total .cantidad-productos span").html("");
+        $(".carrito__total .subtotal span").html("");
+        $(".carrito__total .envio span").html("");
+        $(".carrito__total .total span").html("");
     }
 
     // Agrego la funcion para el boton de eliminar producto del carrito
@@ -466,13 +486,13 @@ $("#btn__notificacion").click(()=>{
 
 // Funcion para el boton del menu
 $("#btn__menu").click(()=>{
-    $("nav ul").toggleClass("show");
+    $(".navbar").toggleClass("mostrar-menu");
 })
 
 // Funcion para para cerrar el menu al presionar un link
-$("nav ul li a").click(()=>{
-    $("nav ul").toggleClass("show");
-})
+// $("nav ul li a").click(()=>{
+//     $("nav ul").toggleClass("show");
+// })
 
 // Funcion para el boton del carrito
 $("#btn__carrito").click(()=>{
@@ -486,12 +506,14 @@ $(".btn__cerrar-carrito").click(()=>{
 })
 
 // Funcion para mostrar elementos al hacer scroll
-$(document).scroll(()=>{
-    let scroll = $(document).scrollTop();
+// $(document).scroll(()=>{
+//     let scroll = $(document).scrollTop();
 
-    // if(scroll > 200){
-    //     $(".producto-item").fadeIn(1000)
-    // }
+//     if(scroll > 150){
+//         $("header").addClass("header-activo")
+//     }else {
+//         $("header").removeClass("header-activo")
+//     }
 
 
-})
+// })

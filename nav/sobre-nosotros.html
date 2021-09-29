@@ -14,18 +14,22 @@
 <body>
     <header>
         <nav>
-            <a href="../index.html"><h1>CS</h1></a>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="sobre-nosotros.html" class="nav-link-activo">Nosotros</a></li>
-            </ul>
-            <button id="btn__menu">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="index.html" class="navbar__logo">
+                <h1>
+                    CS
+                </h1>
+            </a>
+            <div class="navbar">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li class="nav-link-activo"><a href="sobre-nosotros.html">Nosotros</a></li>
+                </ul>
+            </div>
             <div class="nav__botones">
                 <button id="btn__notificacion">
-                    <i class="fas fa-bell"></i>
+                    <!-- <i class="fas fa-bell"></i> -->
+                    <i class='bx bx-bell'></i>
                     <p>0</p>
                 </button>
                 <section id="notificaciones">
@@ -38,10 +42,14 @@
                     </div>
                 </section>
                 <button id="btn__carrito">
-                    <i class="fas fa-shopping-cart"></i>
+                    <!-- <i class="fas fa-shopping-cart"></i> -->
+                    <i class='bx bx-cart'></i>
                     <p>0</p>
                 </button>
             </div>
+            <button id="btn__menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
@@ -49,83 +57,50 @@
 
         <!-- Sobre nosotros -->
         <article>
-            <div class="articulo">
-                <div class="articulo__titulo">
-                    <h2>Nosotros somos</h2>
-                </div>
-                <p>Lorem ipsum dolor sit <span>amet</span> consectetur adipisicing elit. Doloribus, eum? <span>Tempora, doloribus.</span></p>
+            <div class="articulo__titulo">
+                <h2>Nosotros somos</h2>
+                <p>Lorem ipsum <span>dolor sit</span> amet consectetur adipisicing elit. Alias reprehenderit recusandae amet quis magnam? <span>Dolor aliquam asperiores</span> praesentium sint itaque.</p>
             </div>
             <div class="articulo-video">
-                <video src="../img/video-1.mp4" controls></video>
+                <video src="../img/video-1.mp4" controls autoplay muted poster="../img/img4.jpg"></video>
             </div>
         </article>
 
         <!-- Nuestro equipo -->
         <article>
-            <div class="articulo">
-                <div class="articulo__titulo">
-                    <h2>Nuestro equipo</h2>
-                </div>
-                <p>Lorem ipsum dolor sit <span>amet</span> consectetur adipisicing elit. Doloribus, eum? <span>Tempora, doloribus.</span></p>
+            <div class="articulo__titulo">
+                <h2>Nuestro equipo</h2>
+                <p>Lorem ipsum <span>dolor sit</span> amet consectetur adipisicing elit. Alias reprehenderit recusandae amet quis magnam? <span>Dolor aliquam asperiores</span> praesentium sint itaque.</p>
             </div>
-            <div class="articulo-img">
-                <div class="articulo-img__card">
-                    <img src="../img/img-4.jpg" alt="">
-                    <div class="card-info">
-                        <div class="card-info__nombre">
-                            <h4>Nombre Apellido</h4>
-                            <span>Profesion</span>
-                        </div>
-                        <div class="card-info__links">
-                            <a href="#"><i class='bx bxl-facebook' ></i></a>
-                            <a href="#"><i class='bx bxl-instagram' ></i></a>
-                            <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                        </div>
+            <div class="articulo__perfiles">
+                <div class="articulo__perfil">
+                    <img src="../img/img5.png" alt="">
+                    <div class="articulo__perfil-nombre">
+                        <h4>Nombre Apellido</h4>
+                        <span>Profesion</span>
                     </div>
                 </div>
-                <div class="articulo-img__card">
-                    <img src="../img/img-4.jpg" alt="">
-                    <div class="card-info">
-                        <div class="card-info__nombre">
-                            <h4>Nombre Apellido</h4>
-                            <span>Profesion</span>
-                        </div>
-                        <div class="card-info__links">
-                            <a href="#"><i class='bx bxl-facebook' ></i></a>
-                            <a href="#"><i class='bx bxl-instagram' ></i></a>
-                            <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                        </div>
+                <div class="articulo__perfil">
+                    <img src="../img/img5.png" alt="">
+                    <div class="articulo__perfil-nombre">
+                        <h4>Nombre Apellido</h4>
+                        <span>Profesion</span>
                     </div>
                 </div>
-                <div class="articulo-img__card">
-                    <img src="../img/img-4.jpg" alt="">
-                    <div class="card-info">
-                        <div class="card-info__nombre">
-                            <h4>Nombre Apellido</h4>
-                            <span>Profesion</span>
-                        </div>
-                        <div class="card-info__links">
-                            <a href="#"><i class='bx bxl-facebook' ></i></a>
-                            <a href="#"><i class='bx bxl-instagram' ></i></a>
-                            <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                        </div>
+                <div class="articulo__perfil">
+                    <img src="../img/img5.png" alt="">
+                    <div class="articulo__perfil-nombre">
+                        <h4>Nombre Apellido</h4>
+                        <span>Profesion</span>
                     </div>
                 </div>
-                <div class="articulo-img__card">
-                    <img src="../img/img-4.jpg" alt="">
-                    <div class="card-info">
-                        <div class="card-info__nombre">
-                            <h4>Nombre Apellido</h4>
-                            <span>Profesion</span>
-                        </div>
-                        <div class="card-info__links">
-                            <a href="#"><i class='bx bxl-facebook' ></i></a>
-                            <a href="#"><i class='bx bxl-instagram' ></i></a>
-                            <a href="#"><i class='bx bxl-linkedin' ></i></a>
-                        </div>
+                <div class="articulo__perfil">
+                    <img src="../img/img5.png" alt="">
+                    <div class="articulo__perfil-nombre">
+                        <h4>Nombre Apellido</h4>
+                        <span>Profesion</span>
                     </div>
                 </div>
-
             </div>
         </article>
 
@@ -145,7 +120,7 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <!-- <footer>
         <h2>Contactanos!</h2>
         <div class="footer-contenido">
             <div class="footer-contenido__form">
@@ -170,7 +145,7 @@
             </div>
         </div>
         <p>Hecho por Alexis Ruiz Diaz 2021</p>
-    </footer>
+    </footer> -->
     
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="../funciones.js"></script>

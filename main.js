@@ -6,7 +6,7 @@ const categorias = [];
 
 // Productos
 class Producto {
-    constructor(id, nombre, precio, categoria, img, destacado, cantidad, descripcion) {
+    constructor(id, nombre, precio, categoria, img, destacado, cantidad, descripcion, valoracion) {
         this.id = parseInt(id);
         this.nombre = nombre;
         this.precio = parseFloat(precio);
@@ -15,6 +15,7 @@ class Producto {
         this.destacado = destacado;
         this.cantidad = parseInt(cantidad);
         this.descripcion = descripcion;
+        this.valoracion = valoracion;
     }
     controladorCantidad(unidad){
         this.cantidad += unidad;
@@ -28,7 +29,7 @@ class Producto {
 $.get(URLproductos, function(datos, estado){
     if(estado == "success") {
         for(const producto of datos){
-            productos.push(new Producto(producto.id,producto.nombre,producto.precio,producto.categoria,producto.img,producto.destacado,producto.cantidad,producto.descripcion));
+            productos.push(new Producto(producto.id,producto.nombre,producto.precio,producto.categoria,producto.img,producto.destacado,producto.cantidad,producto.descripcion,producto.valoracion));
             
             categorias.push(producto.categoria)
 
@@ -40,6 +41,9 @@ $.get(URLproductos, function(datos, estado){
 
     // Genero el filtro de categorias
     filtroCategoriasUI();
+
+    // Genero un banner con el ultimo producto agregado
+    productoNuevoUI(productos);
 
     // Genero el catalogo de los productos
     catalogoProductosUI(productos);

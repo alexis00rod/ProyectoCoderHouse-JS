@@ -9,22 +9,27 @@
     <link rel="stylesheet" href="../style.css">
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <header>
         <nav>
-            <a href="../index.html"><h1>CS</h1></a>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="servicios.html" class="nav-link-activo">Servicios</a></li>
-                <li><a href="sobre-nosotros.html">Nosotros</a></li>
-            </ul>
-            <button id="btn__menu">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="index.html" class="navbar__logo">
+                <h1>
+                    CS
+                </h1>
+            </a>
+            <div class="navbar">
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li class="nav-link-activo"><a href="servicios.html">Servicios</a></li>
+                    <li><a href="sobre-nosotros.html">Nosotros</a></li>
+                </ul>
+            </div>
             <div class="nav__botones">
                 <button id="btn__notificacion">
-                    <i class="fas fa-bell"></i>
+                    <!-- <i class="fas fa-bell"></i> -->
+                    <i class='bx bx-bell'></i>
                     <p>0</p>
                 </button>
                 <section id="notificaciones">
@@ -37,41 +42,43 @@
                     </div>
                 </section>
                 <button id="btn__carrito">
-                    <i class="fas fa-shopping-cart"></i>
+                    <!-- <i class="fas fa-shopping-cart"></i> -->
+                    <i class='bx bx-cart'></i>
                     <p>0</p>
                 </button>
             </div>
+            <button id="btn__menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
     <main>
 
         <article>
-            <div class="articulo">
-                <div class="articulo__titulo">
-                    <h2>Nuestros servicios</h2>
-                </div>
-                <p>Lorem ipsum dolor sit <span>amet</span> consectetur adipisicing elit. Doloribus, eum? <span>Tempora, doloribus.</span></p>
+            <div class="articulo__titulo">
+                <h2>Nuestros servicios</h2>
+                <p>Lorem ipsum <span>dolor sit</span> amet consectetur adipisicing elit. Alias reprehenderit recusandae amet quis magnam? <span>Dolor aliquam asperiores</span> praesentium sint itaque.</p>
             </div>
             <div class="articulo-cards">
                 <div class="card">
-                    <div class="card-img">
-                        <img src="../img/img-2.jpg" alt="">
-                    </div>
-                    <div class="card-info">
-                        <h4>Reparacion de PC</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nihil quas natus!</p>
-                        <button>Contratar servicio</button>
+                    <img src="../img/img2.png" alt="">
+                    <div class="card__contenido">
+                        <div class="card__descripcion">
+                            <h4>Reparacion de PC</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nihil quas natus!</p>
+                            <button>Contratar servicio</button>
+                        </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-img">
-                        <img src="../img/img-3.jpg" alt="">
-                    </div>
-                    <div class="card-info">
-                        <h4>Armado de PC</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nihil quas natus!</p>
-                        <button>Contratar servicio</button>
+                    <img src="../img/img3.png" alt="">
+                    <div class="card__contenido">
+                        <div class="card__descripcion">
+                            <h4>Armado de PC</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore nihil quas natus!</p>
+                            <button>Contratar servicio</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,7 +100,7 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <!-- <footer>
         <h2>Contactanos!</h2>
         <div class="footer-contenido">
             <div class="footer-contenido__form">
@@ -118,7 +125,7 @@
             </div>
         </div>
         <p>Hecho por Alexis Ruiz Diaz 2021</p>
-    </footer>
+    </footer> -->
     
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="../funciones.js"></script>
