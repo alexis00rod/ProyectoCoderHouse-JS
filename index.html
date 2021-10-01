@@ -68,7 +68,7 @@
 
     <main id="tienda">
 
-        <section>
+        <section class="fade">
             <div class="catalogo__slider">
                 <div class="slider">
                     <ul class="slider-items">
@@ -99,7 +99,7 @@
         </section>
 
         <!-- Catalogo -->
-        <section class="catalogo" id="catalogo">
+        <section class="catalogo fade" id="catalogo">
             <!-- Catalogo categorias -->
             <ul class="catalogo__categorias">
 
@@ -111,7 +111,7 @@
         </section>
 
         <!-- Catalogo de todos los productos -->
-        <section class="catalogo-completo" id="productos">
+        <section class="catalogo-completo fade" id="productos">
             <div class="catalogo-completo__filtro">
                 <div class="filtro__ordenar">
                     <label for="ordenar-por">
@@ -144,59 +144,66 @@
         <section class="carrito" id="carrito">
             <i class="fas fa-times btn__cerrar-carrito"></i>
             <div class="carrito__form">
-                <h3>Informacion personal</h3>
-                <form action="" class="form__informacion-personal">
-                    <p>
-                        <label for="informacion-personal__nombre">Nombre</label>
-                        <input type="text" name="nombre" id="informacion-personal__nombre">
-                    </p>
-                    <p>
-                        <label for="informacion-personal__apellido">Apellido</label>
-                        <input type="text" name="apellido" id="informacion-personal__apellido">
-                    </p>
-                    <p>
-                        <label for="informacion-personal__telefono">Telefono</label>
-                        <input type="text" name="telefono" id="informacion-personal__telefono">
-                    </p>
-                    <p>
-                        <label for="informacion-personal__email">Email</label>
-                        <input type="email" name="email" id="informacion-personal__email">
-                    </p>
-                </form>
-                <h3>Detalles del envio</h3>
-                <form action="" class="form__detalle-envio">
-                    <p>
-                        <label for="detalle-envio__ciudad">Ciudad</label>
-                    <input type="text" name="ciudad" id="detalle-envio__ciudad">
-                    </p>
-                    <p>
-                        <label for="detalle-envio__codigo-postal">Codigo Postal</label>
-                        <input type="text" name="codigo-postal" id="detalle-envio__codigo-postal">
-                    </p>
-                    <p>
-                        <label for="detalle-envio__direccion">Direccion</label>
-                        <input type="text" name="direccion" id="detalle-envio__direccion">
-                    </p>        
-                </form>
-                <h3>Formas de pago</h3>
-                <form action="" class="form__detalle-envio">
-                    <p>
-                        <label for="forma-pago__nombre">Nombre del titular de la tarjeta</label>
-                        <input type="text" name="tarjeta-nombre" id="forma-pago__nombre">
-                    </p>
-                    <p>
-                        <label for="forma-pago__tarjeta-numero">Numero de tarjeta</label>
-                        <input type="text" name="tarjeta-numero" id="forma-pago__tarjeta-numero">
-                    </p>
-                    <p>
-                        <label for="forma-pago__tarjeta-vencimiento">Vencimiento</label>
-                        <input type="text" name="tarjeta-vencimiento" id="forma-pago__tarjeta-vencimiento">
-                    </p>
-                    <p>
-                        <label for="forma-pago__tarjeta-ccv">CVV</label>
-                        <input type="text" name="tarjeta-cvv" id="forma-pago__tarjeta-cvv">
-                    </p>
-                </form>
+                <div class="form__informacion-personal">
+                    <h3>Informacion personal</h3>
+                    <form action="" class="form__informacion-personal">
+                        <p>
+                            <label for="informacion-personal__nombre">Nombre</label>
+                            <input type="text" name="nombre" id="informacion-personal__nombre">
+                        </p>
+                        <p>
+                            <label for="informacion-personal__apellido">Apellido</label>
+                            <input type="text" name="apellido" id="informacion-personal__apellido">
+                        </p>
+                        <p>
+                            <label for="informacion-personal__telefono">Telefono</label>
+                            <input type="text" name="telefono" id="informacion-personal__telefono">
+                        </p>
+                        <p>
+                            <label for="informacion-personal__email">Email</label>
+                            <input type="email" name="email" id="informacion-personal__email">
+                        </p>
+                    </form>
+                </div>
+                <div class="form__detalle-envio">
+                    <h3>Detalles del envio</h3>
+                    <form action="">
+                        <p>
+                            <label for="detalle-envio__ciudad">Ciudad</label>
+                        <input type="text" name="ciudad" id="detalle-envio__ciudad">
+                        </p>
+                        <p>
+                            <label for="detalle-envio__codigo-postal">Codigo Postal</label>
+                            <input type="text" name="codigo-postal" id="detalle-envio__codigo-postal">
+                        </p>
+                        <p>
+                            <label for="detalle-envio__direccion">Direccion</label>
+                            <input type="text" name="direccion" id="detalle-envio__direccion">
+                        </p>        
+                    </form>
+                </div>
+                <div class="form__detalle-envio">
+                    <h3>Formas de pago</h3>
+                    <form action="">
+                        <p>
+                            <label for="forma-pago__nombre">Nombre del titular de la tarjeta</label>
+                            <input type="text" name="tarjeta-nombre" id="forma-pago__nombre">
+                        </p>
+                        <p>
+                            <label for="forma-pago__tarjeta-numero">Numero de tarjeta</label>
+                            <input type="text" name="tarjeta-numero" id="forma-pago__tarjeta-numero">
+                        </p>
+                        <p>
+                            <label for="forma-pago__tarjeta-vencimiento">Vencimiento</label>
+                            <input type="text" name="tarjeta-vencimiento" id="forma-pago__tarjeta-vencimiento">
+                        </p>
+                        <p>
+                            <label for="forma-pago__tarjeta-ccv">CVV</label>
+                            <input type="text" name="tarjeta-cvv" id="forma-pago__tarjeta-cvv">
+                        </p>
+                    </form>
+                </div>
+                
             </div>
             <div class="carrito__compra">
                 <div class="carrito__total">
@@ -205,13 +212,15 @@
                     <p class="subtotal">Subtotal: <span></span></p>
                     <p class="envio">Envio: <span></span></p>
                     <strong class="total">Total: <span></span></strong>
-                    <button>Comprar</button>
+                    <button class="btn__finalizar-compra">Comprar</button>
                 </div>
                 <ul class="carrito__productos">
                     <p>Tu carrito esta vacio</p>
                 </ul>
             </div>
         </section>
+
+        
         
     </main>
 

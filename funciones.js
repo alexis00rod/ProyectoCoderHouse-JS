@@ -250,9 +250,9 @@ function carritoUI(){
                             <div class="carrito-item__contenido">
                                 <h4>${producto.nombre}</h4>
                                 <div class="carrito-item__cantidad">
-                                    <i class="fas fa-chevron-left btn__restar-cantidad"" id="${producto.id}"></i>
-                                    <p class="cantidad-contador">${producto.cantidad}</p>
-                                    <i class="fas fa-chevron-right btn__sumar-cantidad" id="${producto.id}"></i>
+                                <i class="fas fa-chevron-left btn__restar-cantidad"" id="${producto.id}"></i>
+                                <p class="cantidad-contador">${producto.cantidad}</p>
+                                <i class="fas fa-chevron-right btn__sumar-cantidad" id="${producto.id}"></i>
                                 </div>
                             </div>
                             <strong>$${producto.precio}</strong>
@@ -266,23 +266,27 @@ function carritoUI(){
     // Genero el html con el contador de productos seleccionados
     $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
 
-
     // Agrego la funcion para el boton de restar cantidad
     $(".btn__restar-cantidad").click((e)=>{
         // Busco en el array carrito el producto seleccionado segun su id
         let productoCarrito = carrito.find(producto => producto.id == e.target.id)
+
+        // Acceso el contador de cantidad del producto seleccionado
+        let cantidadContador = e.target.parentNode.childNodes[3]
 
         // Si la cantidad del producto seleccionado es mayor a 1:
         if(productoCarrito.cantidad > 1){
             // Resto 1 a la cantidad del producto
             productoCarrito.controladorCantidad(-1)
 
-            // Resto 1 en el contador de cantidad
-            $(`.cantidad-contador`).html(`${productoCarrito.cantidad}`)
-            
-            // Actualizo el precio final
-            $(".precio-final span").html(`$${precioFinal()}`)
+            // Actualizo el contador de cantidad
+            cantidadContador.innerHTML = productoCarrito.cantidad
 
+            // Actualizo el precio final
+            $(".carrito__total .cantidad-productos span").html(`(${cantidadTotalProductos()})`);
+            $(".carrito__total .subtotal span").html(`$${precioFinal()}`);
+            $(".carrito__total .total span").html(`$${precioFinal() + 350}`);
+                
             // Actualizo el contador de la cantidad total de productos en el carrito
             $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
 
@@ -291,6 +295,7 @@ function carritoUI(){
 
         }
 
+
     })
 
     // Agrego la funcion para el boton de sumar cantidad
@@ -298,12 +303,19 @@ function carritoUI(){
         // Busco en el array carrito el producto seleccionado segun su id
         let productoCarrito = carrito.find(producto => producto.id == e.target.id)
         
-        //Sumo 1 a la cantidad del producto
+        // Sumo 1 a la cantidad del producto
         productoCarrito.controladorCantidad(1);
-        $(`.cantidad-contador`).html(`${productoCarrito.cantidad}`)
+
+        // Acceso el contador de cantidad del producto seleccionado
+        let cantidadContador = e.target.parentNode.childNodes[3]
+
+        // Actualizo el contador de cantidad
+        cantidadContador.innerHTML = productoCarrito.cantidad
 
         // Actualizo el precio final
-        $(".precio-final span").html(`$${precioFinal()}`)
+        $(".carrito__total .cantidad-productos span").html(`(${cantidadTotalProductos()})`);
+        $(".carrito__total .subtotal span").html(`$${precioFinal()}`);
+        $(".carrito__total .total span").html(`$${precioFinal() + 350}`);
 
         // Actualizo el contador de la cantidad total de productos en el carrito
         $('#btn__carrito p').html(`${cantidadTotalProductos()}`);
@@ -370,110 +382,54 @@ function carritoUI(){
 
     })
 
+    // Agrego el contador de notificaciones
+    let notificaciones = 0;
+
     // Agrego la funcion continuar compra
-    $(".btn__continuar-compra").click(()=>{
-        // Calculo el descuento del 15% del precio final
-        const descuento = precioFinal()*0.15;
+    $(".btn__finalizar-compra").click(()=>{
+        notificaciones += 1
 
-        // Genero la variable para el precio final con descuento
-        let precioFinalDescontado = 0;
+        // Agrego la notificacion en el boton de notificaciones
+        $("#btn__notificacion p").html(notificaciones)
 
-        const envio = 350;
+        // Agrego el mensaje de compra finalizada en la seccion notificaciones
+        $(".notificaciones-contenido").append("<p>Su compra finalizo con exito, pronto recibiras los productos en la puerta de tu casa. Gracias por elegirnos.</p>")
 
-        $(".carrito-footer").empty();
+        // Si hay notificaciones muestro el boton para eliminar los mensajes
+        if(notificaciones + 1){
+            $(".btn__eliminar-msjs").show();
+        }
 
-        // Si la cantidad total de productos es mayor a 3 aplico el descuento 
-        if(cantidadTotalProductos() >= 3){
-            // Al precio final le resto el descuento
-            precioFinalDescontado = precioFinal() - descuento;
-            $(".carrito-body").html(`<div class="carrito-finalizacion">
-                                        <h4>Resumen de compra</h4>
-                                        <div class="carrito-finalizacion-contenido">
-                                            <p>Productos: <span>(${cantidadTotalProductos()})</span></p>
-                                            <p>Subtotal: <span>$${precioFinal()}</span></p>
-                                            <p>Descuento del 15%: <span>$${descuento}</span></p>
-                                            <p>Envio: <span>$${envio}</span></p>
-                                            <p>Total: <span>$${precioFinalDescontado + envio}</span></p>
-                                        </div>
-                                        <button class="btn__cancelar-compra">Cancelar compra</button>
-                                        <button class="btn__finalizar-compra">Finalizar compra</button>
-                                    </div>`);
-        } 
-        // Si la cantidad total no es mayor a 3 no aplico descuento
-        else {
-            precioFinalDescontado = precioFinal();
+        // Agrego la funcion del boton para borrar los mensajes
+        $(".btn__eliminar-msjs").click(()=>{
+            // Borro los html de las notificaciones
+            $(".notificaciones-contenido").html("");
 
-            $(".carrito-body").html(`<div class="carrito-finalizacion">
-                                        <h4>Resumen de compra</h4>
-                                        <div class="carrito-finalizacion-contenido">
-                                            <p>Productos: <span>(${cantidadTotalProductos()})</span></p>
-                                            <p>Subtotal: <span>$${precioFinal()}</span></p>
-                                            <p>Envio: <span>$${envio}</span></p>
-                                            <p>Total: <span>$${precioFinalDescontado + envio}</span></p>
-                                        </div>
-                                        <button class="btn__cancelar-compra">Cancelar compra</button>
-                                        <button class="btn__finalizar-compra">Finalizar compra</button>
-                                    </div>`);
-        
-        }       
+            // Restauro a 0 el contador de notifaciones
+            notificaciones = 0;
 
-        // Agrego la funcion para el boton de cancelar compra
-        $(".btn__cancelar-compra").click(cancelarCompra)
+            // Actualizo el contadador de notificaciones del boton
+            $("#btn__notificacion p").html(`${notificaciones}`);
 
-        // Agrego la funcion para el boton de finalizar compra
-        $(".btn__finalizar-compra").click(finalizarCompra)
+            // Oculto el boton para borrar mensajes
+            $(".btn__eliminar-msjs").hide();
+        })
+
+        // Vacio el carrito
+        localStorage.removeItem("carrito");
+        carrito.length = 0;
+        $("#btn__carrito p").html("0")
+        $(".carrito__productos").html("<p>Tu carrito esta vacio</p>");
+
+        $(".carrito__total .cantidad-productos span").html("");
+        $(".carrito__total .subtotal span").html("");
+        $(".carrito__total .envio span").html("");
+        $(".carrito__total .total span").html("");
+
+        // Cierro el carrito
+        $(".carrito").toggleClass("mostrar-carrito");
 
     })
-
-}
-
-// Funcion para cancelar compra
-function cancelarCompra() {
-    // Vacio el carrito
-    localStorage.removeItem("carrito");
-    carrito.length = 0;
-    $("#btn__carrito p").html("0")
-    $(".carrito-finalizacion").empty();
-    $(".carrito-body").html("<p>Tu carrito esta vacio</p>")
-
-    // Cierro el carrito
-    $(".carrito").toggleClass("mostrar-carrito");
-}
-
-// Agrego el contador de notificaciones
-let notificaciones = 0;
-
-// Funcion para finazalizar la compra
-function finalizarCompra() {
-    notificaciones += 1
-
-    // Agrego la notificacion en el boton de notificaciones
-    $("#btn__notificacion p").html(notificaciones)
-
-    // Agrego el mensaje de compra finalizada en la seccion notificaciones
-    $(".notificaciones-contenido").append("<p>Su compra finalizo con exito, pronto recibiras los productos en la puerta de tu casa. Gracias por elegirnos.</p>")
-
-    // Si hay notificaciones muestro el boton para eliminar los mensajes
-    if(notificaciones + 1){
-        $(".btn__eliminar-msjs").show();
-    }
-
-    // Agrego la funcion del boton para borrar los mensajes
-    $(".btn__eliminar-msjs").click(()=>{
-        // Borro los html de las notificaciones
-        $(".notificaciones-contenido").html("");
-
-        // Restauro a 0 el contador de notifaciones
-        notificaciones = 0;
-
-        // Actualizo el contadador de notificaciones del boton
-        $("#btn__notificacion p").html("0");
-
-        // Oculto el boton para borrar mensajes
-        $(".btn__eliminar-msjs").hide();
-    })
-
-    cancelarCompra()
 
 }
 
@@ -497,16 +453,3 @@ $("#btn__carrito").click(()=>{
 $(".btn__cerrar-carrito").click(()=>{
     $(".carrito").toggleClass("mostrar-carrito");
 })
-
-// Funcion para mostrar elementos al hacer scroll
-// $(document).scroll(()=>{
-//     let scroll = $(document).scrollTop();
-
-//     if(scroll > 150){
-//         $("header").addClass("header-activo")
-//     }else {
-//         $("header").removeClass("header-activo")
-//     }
-
-
-// })
