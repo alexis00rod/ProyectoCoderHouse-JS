@@ -44,7 +44,14 @@ $.get(URLproductos, function(datos, estado){
     // Genero un banner con el ultimo producto agregado
     productoNuevoUI(productos);
 
+    // Genero el select para ordenar los productos
+    ordenProductosUI(productos);
+
     // Genero el catalogo de los productos
     catalogoProductosUI(productos);
 
+
 });
+
+
+

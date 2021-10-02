@@ -121,6 +121,85 @@ function productoNuevoUI(productos) {
                                         </div>`)
 }
 
+// Funcion para ordenar los productos
+function ordenProductosUI(productos) {
+
+    $("#ordenar-por").change(()=>{
+        if($("#ordenar-por").val() == 1){
+            let orden = productos.sort((a,b)=>{
+                if(a.valoracion > b.valoracion){
+                    return -1
+                }
+                if(a.valoracion < b.valoracion){
+                    return 1
+                }
+                return 0
+            })
+    
+            $(".catalogo__productos").empty();
+            catalogoProductosUI(orden);
+
+        } else if ($("#ordenar-por").val() == 2){
+            let orden = productos.sort((a,b)=>{
+                if(a.nombre < b.nombre){
+                    return -1
+                }
+                if(a.nombre > b.nombre){
+                    return 1
+                }
+                return 0
+            })
+    
+            $(".catalogo__productos").empty();
+            catalogoProductosUI(orden);
+
+        } else if ($("#ordenar-por").val() == 3){
+            let orden = productos.sort((a,b)=>{
+                if(a.nombre < b.nombre){
+                    return 1
+                }
+                if(a.nombre > b.nombre){
+                    return -1
+                }
+                return 0
+            })
+    
+            $(".catalogo__productos").empty();
+            catalogoProductosUI(orden);
+
+        } else if ($("#ordenar-por").val() == 4){
+            let orden = productos.sort((a,b)=>{
+                if(a.precio > b.precio){
+                    return -1
+                }
+                if(a.precio < b.precio){
+                    return 1
+                }
+                return 0
+            })
+    
+            $(".catalogo__productos").empty();
+            catalogoProductosUI(orden);
+
+        } else {
+            let orden = productos.sort((a,b)=>{
+                if(a.precio > b.precio){
+                    return 1
+                }
+                if(a.precio < b.precio){
+                    return -1
+                }
+                return 0
+            })
+    
+            $(".catalogo__productos").empty();
+            catalogoProductosUI(orden);
+
+        }
+    })
+
+}
+
 // Funcion para generar el catalogo de productos
 function catalogoProductosUI(productos) {
     // Agrego el contador de todos los productos que hay en el catalogo
@@ -382,55 +461,59 @@ function carritoUI(){
 
     })
 
-    // Agrego el contador de notificaciones
-    let notificaciones = 0;
-
     // Agrego la funcion continuar compra
-    $(".btn__finalizar-compra").click(()=>{
-        notificaciones += 1
+    $(".btn__finalizar-compra").click(finalizarCompra)
 
-        // Agrego la notificacion en el boton de notificaciones
-        $("#btn__notificacion p").html(notificaciones)
+}
 
-        // Agrego el mensaje de compra finalizada en la seccion notificaciones
-        $(".notificaciones-contenido").append("<p>Su compra finalizo con exito, pronto recibiras los productos en la puerta de tu casa. Gracias por elegirnos.</p>")
+// Agrego el contador de notificaciones
+let notificaciones = 0;
 
-        // Si hay notificaciones muestro el boton para eliminar los mensajes
-        if(notificaciones + 1){
-            $(".btn__eliminar-msjs").show();
-        }
+function finalizarCompra () {
+    notificaciones += 1
 
-        // Agrego la funcion del boton para borrar los mensajes
-        $(".btn__eliminar-msjs").click(()=>{
-            // Borro los html de las notificaciones
-            $(".notificaciones-contenido").html("");
+    // Agrego la notificacion en el boton de notificaciones
+    $("#btn__notificacion p").html(notificaciones)
 
-            // Restauro a 0 el contador de notifaciones
-            notificaciones = 0;
+    // Agrego el mensaje de compra finalizada en la seccion notificaciones
+    $(".notificaciones-contenido").append("<p>Su compra finalizo con exito, pronto recibiras los productos en la puerta de tu casa. Gracias por elegirnos.</p>")
 
-            // Actualizo el contadador de notificaciones del boton
-            $("#btn__notificacion p").html(`${notificaciones}`);
+    // Si hay notificaciones muestro el boton para eliminar los mensajes
+    if(notificaciones + 1){
+        $(".btn__eliminar-msjs").show();
+    }
 
-            // Oculto el boton para borrar mensajes
-            $(".btn__eliminar-msjs").hide();
-        })
+    // Agrego la funcion del boton para borrar los mensajes
+    $(".btn__eliminar-msjs").click(()=>{
+        // Borro los html de las notificaciones
+        $(".notificaciones-contenido").html("");
 
-        // Vacio el carrito
-        localStorage.removeItem("carrito");
-        carrito.length = 0;
-        $("#btn__carrito p").html("0")
-        $(".carrito__productos").html("<p>Tu carrito esta vacio</p>");
+        // Restauro a 0 el contador de notifaciones
+        notificaciones = 0;
 
-        $(".carrito__total .cantidad-productos span").html("");
-        $(".carrito__total .subtotal span").html("");
-        $(".carrito__total .envio span").html("");
-        $(".carrito__total .total span").html("");
+        // Actualizo el contadador de notificaciones del boton
+        $("#btn__notificacion p").html(`${notificaciones}`);
 
-        // Cierro el carrito
-        $(".carrito").toggleClass("mostrar-carrito");
-
+        // Oculto el boton para borrar mensajes
+        $(".btn__eliminar-msjs").hide();
     })
 
+    
+
+
+    // Vacio el carrito
+    localStorage.removeItem("carrito");
+    carrito.length = 0;
+    $("#btn__carrito p").html("0")
+    $(".carrito__productos").html("<p>Tu carrito esta vacio</p>");
+
+    $(".carrito__total .cantidad-productos span").html("");
+    $(".carrito__total .subtotal span").html("");
+    $(".carrito__total .envio span").html("");
+    $(".carrito__total .total span").html("");
+
+    // Cierro el carrito
+    $(".carrito").toggleClass("mostrar-carrito");
 }
 
 // Funcion para el boton de notificaciones
