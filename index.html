@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="style.css">
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <header>
@@ -68,7 +67,7 @@
 
     <main id="tienda">
 
-        <section class="fade">
+        <section>
             <div class="catalogo__slider">
                 <div class="slider">
                     <ul class="slider-items">
@@ -99,7 +98,7 @@
         </section>
 
         <!-- Catalogo -->
-        <section class="catalogo fade" id="catalogo">
+        <section class="catalogo" id="catalogo">
             <!-- Catalogo categorias -->
             <ul class="catalogo__categorias">
 
@@ -111,7 +110,7 @@
         </section>
 
         <!-- Catalogo de todos los productos -->
-        <section class="catalogo-completo fade" id="productos">
+        <section class="catalogo-completo" id="productos">
             <div class="catalogo-completo__filtro">
                 <div class="filtro__ordenar">
                     <label for="ordenar-por">
@@ -177,7 +176,7 @@
                     <form action="">
                         <p>
                             <label for="detalle-envio__ciudad">Ciudad</label>
-                        <input type="text" name="ciudad" id="detalle-envio__ciudad">
+                            <input type="text" name="ciudad" id="detalle-envio__ciudad">
                         </p>
                         <p>
                             <label for="detalle-envio__codigo-postal">Codigo Postal</label>
@@ -219,7 +218,7 @@
                     <p class="subtotal">Subtotal: <span></span></p>
                     <p class="envio">Envio: <span></span></p>
                     <strong class="total">Total: <span></span></strong>
-                    <button class="btn__finalizar-compra">Comprar</button>
+                    <button class="btn__finalizar-compra" type="submit">Comprar</button>
                 </div>
                 <ul class="carrito__productos">
                     <p>Tu carrito esta vacio</p>

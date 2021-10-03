@@ -498,9 +498,6 @@ function finalizarCompra () {
         $(".btn__eliminar-msjs").hide();
     })
 
-    
-
-
     // Vacio el carrito
     localStorage.removeItem("carrito");
     carrito.length = 0;

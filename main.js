@@ -50,7 +50,6 @@ $.get(URLproductos, function(datos, estado){
     // Genero el catalogo de los productos
     catalogoProductosUI(productos);
 
-
 });
 
 

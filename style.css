@@ -180,8 +180,7 @@ main {
     align-items: center;
     border-radius: 20px;
     box-shadow: var(--box-shadow);
-    position: relative;
-    animation: bannerSlide 1s;
+    position: relative
 }
 
 
@@ -254,8 +253,7 @@ main {
     justify-content: center;
     background-color: var(--color-1);
     border-radius: 20px;
-    box-shadow: var(--box-shadow);
-    animation: sliderSlide 1s;
+    box-shadow: var(--box-shadow)
 }
 
 
@@ -333,8 +331,7 @@ main {
     width: 100%;
     height: max-content;
     margin: 0 auto;
-    display: flex;
-    animation: catalogoSlide 1s;
+    display: flex
 }
 
 
@@ -474,8 +471,7 @@ main {
     margin: 20px auto;
     border-radius: 20px;
     background-color: var(--color-1);
-    box-shadow: 8px 8px 15px #c2c2c2;
-    animation: catalogoInfoSlide 1s;
+    box-shadow: 8px 8px 15px #c2c2c2
 }
 .catalogo__info li {
     width: 300px;
@@ -522,8 +518,7 @@ main {
     background-color: var(--color-1);
     color: var(--color-4);
     box-shadow: var(--box-shadow);
-    max-width: 300px;
-    animation: productoItemSlide 1s;
+    max-width: 300px
 }
 .producto-item img {
     width: 40%;
@@ -827,7 +822,6 @@ main {
     outline: none;
     border-radius: 4px;
 }
-
 
 
 /* Carrito compra */
@@ -1495,11 +1489,6 @@ footer .footer__link a:hover {
 }
 
 @media screen and (max-width: 415px) {
-    /* Barra de navegacion */
-    .navbar ul li {
-        animation: navLinkSlide 1s;
-    }
-
     /* Banner */
     .banner {
         width: 100%;
@@ -1720,62 +1709,3 @@ footer .footer__link a:hover {
 
 }
 
-
-/* Keyframes */
-@keyframes bannerSlide {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-
-@keyframes sliderSlide {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-
-@keyframes catalogoInfoSlide {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-
-@keyframes catalogoSlide {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes productoItemSlide {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
